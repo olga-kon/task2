@@ -32,17 +32,19 @@ function printEven(num1, num2) {
     let even1, even2;
     
     
-    if(isEven(num1) && isEven(num2)) {
+    if(isEven(num1) && isEven(num2) && num1 !== num2) {
         resultEven += "Ambos son pares";
-    } else if (!isEven(num1) && !isEven(num2)) {
+    } else if (!isEven(num1) && !isEven(num2) && num1 !== num2) {
         resultEven += "Ambos no son pares";
 
     } else {
     even1 = (isEven(num1) ? `${num1} es par` : `${num1} es inpar`);
     even2 = (isEven(num2) ? `${num2} es par` : `${num2} es inpar`);
     
-    if(resultEven === "") {
+    if(resultEven === "" && num1 !== num2) {
         resultEven += `${even1}, ${even2}`;
+    } else if (resultEven === "" && num1 === num2) {
+        resultEven += `${even1}`;
     }
 }
 
@@ -57,17 +59,19 @@ function isPrime(num) {
 
 function printPrime(num1, num2) {
     let prime1, prime2;
-  if (isPrime(num1) && isPrime(num2)) {
+  if (isPrime(num1) && isPrime(num2) && num1 !== num2) {
     resultPrime += "Ambos son primos";
-  } else if (!isPrime(num1) && !isPrime(num2)) {
+  } else if (!isPrime(num1) && !isPrime(num2) && num1 !== num2) {
       resultPrime += "Ambos no son primos";
   } else {
     prime1 = (isPrime(num1) ? `${num1} es primo` : `${num1} no es primo`);
     prime2 = (isPrime(num2) ? `${num2} es primo` : `${num2} no es primo`);
 
-    if(resultPrime === "") {
+    if(resultPrime === "" && num1 !== num2) {
         resultPrime += `${prime1}, ${prime2}`;
-  }
+  } else if (resultPrime === "" && num1 === num2) {
+    resultPrime += `${prime1}`;
+}
 }
 }
 /*print the range*/
@@ -77,20 +81,22 @@ function whatRange(num1, num2) {
     if (num1 < num2) {
       for (let i = num1 + 1; i < num2; i++) {
         if (i % 2 === 0) { continue; } 
-        range = i + " ";
-        resultRange += `el rango es ${range}`;
+        range += i + " ";
+        resultRange = `el rango es ${range}`;
+        
     }}
       else if (num1 > num2) {
         for (let i = num1 -1; i > num2; i--) {
             if (i % 2 !== 0) { continue; } 
             range += i + " ";
-            resultRange += `el rango es ${range}`;
+            resultRange = `el rango es ${range}`;
     }} else if (num1 === num2) {
       range = num1;
-      resultRange += `el rango es ${range}`;
+      resultRange = `el rango es ${range}`;
     } else if ((num1 + 1) === num2 || num1 === (num2 + 1)) {
         resultRange = "";
     }
+    
     return resultRange;
     }
 
